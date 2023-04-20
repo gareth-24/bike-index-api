@@ -62,7 +62,7 @@ function printBikeElements(apiResponse) {
 }
 
 function printCountElements(apiResponse)  {
-  document.querySelector("#stolenCount").innerText = `Stolen: ${apiResponse.proximity}`
+  document.querySelector("#stolenCount").innerText = `Number of reported stolen bikes: ${apiResponse.proximity}`
 }
 
 function printError(apiResponse){
