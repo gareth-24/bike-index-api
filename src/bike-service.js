@@ -14,4 +14,18 @@ export default class BikeService  {
       return error;
     }
   }
+
+  static async getStolenCount(city,distance)  {
+    try {
+      const response = await fetch(`https://bikeindex.org:443/api/v3/search/count?location=${city}&distance=${distance}&stolenness=stolen`);
+      const jsonifiedResponse = await response.json();
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText} 
+        ${jsonifiedResponse.message}`);
+      }
+      return jsonifiedResponse;
+    } catch(error)  {
+      return error;
+    }
+  }
 }
