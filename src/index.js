@@ -21,6 +21,7 @@ function handleFormSubmission(event) {
   event.preventDefault();
   const city = document.querySelector("#location").value;
   document.querySelector('#location').value = null;
+  document.querySelector("#bikeList").innerText = null;
   getBike(city);
 }
 
@@ -34,17 +35,19 @@ over arching list
 */
 
 
-function printElements(apiResponse){
-  apiResponse.bikes.forEach(function(key){
+function printElements(apiResponse) {
+  apiResponse.bikes.forEach(function(key) {
     let bike = document.createElement("li");
     bike.append(`Bike id: ${key.id}, Make and Model: ${key.frame_model}, ${key.manufacturer_name}, ${key.year}`);
-   
-    // if(key.stolen){
-    //   const stolenInfo = document.createElement("li").append(`Date stolen: ${key.date_stolen}, Location: ${key.stolen_location}`);
-    //   const ulInfo = document.createElement("ul").append(stolenInfo);
-    //   bike.append(ulInfo);
-    // }
-    
+
+    if(key.stolen){
+      const stolenInfo = document.createElement("li");
+      stolenInfo.append(`Date stolen: ${key.date_stolen}, Location: ${key.stolen_location}`);
+      const ulInfo = document.createElement("ul");
+      ulInfo.append(stolenInfo);
+      bike.append(ulInfo);
+    }
+
     document.querySelector("#bikeList").append(bike);
   }); 
   // document.querySelector("#showResponse").innerText = `Bike id: ${apiResponse.bikes[0].id}, Make and Model: ${apiResponse.bikes[0].frame_model}, ${apiResponse.bikes[0].manufacturer_name}, ${apiResponse.bikes[0].year}`;

@@ -1,7 +1,7 @@
 export default class BikeService  {
   static async getBike(city)  {
     try {
-      const response = await fetch(`https://bikeindex.org/api/v3/search?location=${city}&distance=10&stolenness=stolen`);
+      const response = await fetch(`https://bikeindex.org/api/v3/search?page=1&per_page=25&location=${city}&distance=1&stolenness=proximity`);
       //https://bikeindex.org/api/v3/search?location=Portland&stolenness=all
       const jsonifiedResponse = await response.json();
       if (!response.ok) {
