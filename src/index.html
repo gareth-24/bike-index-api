@@ -8,17 +8,33 @@
     <p></p>
     
     <form>
-      <label for="location">Enter a location:</label>
-      <input id="location" type="text" name="location">
-      <button type="submit" class="btn-success" id="bikeLocation">Submit</button>
+      <div class="mb-3">
+        <label for="location">Enter a location:</label>
+        <input id="location" type="text" name="location" class="form-control" placeholder="Seattle,WA">
+        <label for="color">Enter bike color:</label>
+        <input id="color" type="text" name="color" class="form-control" placeholder="red">
+        <label for="distance">Enter search radius:</label>
+        <input id="distance" type="number" name="distance" class="form-control" placeholder="5">
+        <div class="form-text">Search will default to your local IP, and a radius of 5 miles if nothing is inputted.</div>
+      </div>
+      <button type="submit" class="btn btn-success" id="bikeLocation">Submit</button>
     </form>
-    <ol id="bikeList">
-        js appened make modle list item to ol
-        js we make ul append stolen info to that
-        append ul to make modle list item
-    </ol>
-    <p id="showResponse"></p>
-    <p id="showResponse2"></p>
+    <div class="accordion" id="results">
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+            Registered bikes:
+          </button>
+        </h3>
+        <div id="collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <ol id="bikeList"></ol>
+            <p id="showResponse"></p>
+            <p id="showResponse2"></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
