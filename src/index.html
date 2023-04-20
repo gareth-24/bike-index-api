@@ -5,8 +5,6 @@
 <body>
   <div class="container">
     <h1>Get information on registered bikes in your area!</h1>
-    <p></p>
-    
     <form>
       <div class="mb-3">
         <label for="location">Enter a location:</label>
@@ -19,9 +17,10 @@
       </div>
       <button type="submit" class="btn btn-success" id="bikeLocation">Submit</button>
     </form>
+
     <div class="accordion" id="results">
-      <div class="accordion-item">
-        <h3 class="accordion-header">
+      <div class="accordion-item" id="bike-output">
+        <h3 class="accordion-header" id="headingOne">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
             Registered bikes:
           </button>
@@ -29,8 +28,21 @@
         <div id="collapseOne" class="accordion-collapse collapse show">
           <div class="accordion-body">
             <ol id="bikeList"></ol>
-            <p id="showResponse"></p>
-            <p id="showResponse2"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="count-output">
+        <h3 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+            Stolen bike data in the area:
+          </button>
+        </h3>
+        <div id="collapseTwo" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <ul id="statistics">
+              <li id="stolenCount"></li>
+            </ul>
           </div>
         </div>
       </div>

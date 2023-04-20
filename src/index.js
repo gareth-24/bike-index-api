@@ -12,7 +12,19 @@ async function getBike(city,color,distance)  {
   const response = await BikeService.getBike(city,color,distance);
   // console.log("bikes 0 ",response.bikes[0])
   if (response.bikes) {
-    printElements(response);
+    printBikeElements(response);
+  } else  {
+    printError(response);
+  }
+}
+
+async function getStolenCount(city,distance)  {
+  if(isNaN(Number(distance))){
+    distance = 5;
+  }
+  const response = await BikeService.getStolenCount(city,distance);
+  if (response.proximity) {
+    printCountElements(response);
   } else  {
     printError(response);
   }
@@ -30,9 +42,10 @@ function handleFormSubmission(event) {
   document.querySelector('#distance').value = null;
   document.querySelector("#bikeList").innerText = null;
   getBike(city,color,distance);
+  getStolenCount(city,distance);
 }
 
-function printElements(apiResponse) {
+function printBikeElements(apiResponse) {
   apiResponse.bikes.forEach(function(key) {
     let bike = document.createElement("li");
     bike.append(`Bike id: ${key.id}, Make and Model: ${key.frame_model}, ${key.manufacturer_name}, ${key.year}, Color(s): ${key.frame_colors},`);
@@ -46,6 +59,10 @@ function printElements(apiResponse) {
 
     document.querySelector("#bikeList").append(bike);
   }); 
+}
+
+function printCountElements(apiResponse)  {
+  document.querySelector("#stolenCount").innerText = `Stolen: ${apiResponse.proximity}`
 }
 
 function printError(apiResponse){
